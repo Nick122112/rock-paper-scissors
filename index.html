@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Odin Project Rock, Paper, Scissors</title>
+  </head>
+
+  <body>
+    <script>
+      "use strict";
+      let choices = ["Rock", "Paper", "Scissors"];
+      function computerPlay() {
+        let choice = choices[Math.floor(Math.random() * choices.length)]; // makes a random selection for the computer
+        return choice.toLocaleLowerCase();
+      }
+
+      function playRound(playerSelection, computerSelection) {
+        // takes the computer and player selections and determines a winner
+        if (playerSelection === "rock" && computerSelection === "rock") {
+          return `That's a tie!`;
+        } else if (
+          playerSelection === "rock" &&
+          computerSelection === "paper"
+        ) {
+          return `You lose! Paper beats Rock!`;
+        } else if (
+          playerSelection === "rock" &&
+          computerSelection === "scissors"
+        ) {
+          return `You win! Rock beats Scissors!`;
+        } else if (
+          playerSelection === "paper" &&
+          computerSelection === "paper"
+        ) {
+          return `That's a tie!`;
+        } else if (
+          playerSelection === "paper" &&
+          computerSelection === "rock"
+        ) {
+          return `You win! Paper beats Rock`;
+        } else if (
+          playerSelection === "paper" &&
+          computerSelection === "scissors"
+        ) {
+          return `You lose! Scissors beats Paper!`;
+        } else if (
+          playerSelection === "scissors" &&
+          computerSelection === "scissors"
+        ) {
+          return `That's a tie!`;
+        } else if (
+          playerSelection === "scissors" &&
+          computerSelection === "rock"
+        ) {
+          return `You lose! Rock beats Scissors`;
+        } else if (
+          playerSelection === "scissors" &&
+          computerSelection === "paper"
+        ) {
+          return `You win! Scissors beats paper!`;
+        } else {
+          return `Please make a valid selection.`;
+        }
+      }
+
+      function game() {
+        let playerScore = 0; // sets the initial player score
+        let computerScore = 0; // sets the initial computer score
+        while (playerScore < 5 && computerScore < 5) {
+          // if player score or computer score is below 5, the loop will continue to run
+          const playerSelection = prompt(
+            `Choose Rock, Paper, or Scissors.`
+          ).toLocaleLowerCase(); // prompts the player to make a selection
+          const computerSelection = computerPlay(); // displays the computer selection using the computerPlay function from earlier
+          playRound(playerSelection, computerSelection); // runs the playRound function, which determines who wins
+          console.log(`Player selection: ${playerSelection}`); // logs the players selection to the console
+          console.log(`Computer selection: ${computerSelection}`); // logs the computers selection to the console
+          console.log(playRound(playerSelection, computerSelection)); // logs the play round results
+          if (
+            playRound(playerSelection, computerSelection).includes("You win") // if the player won, their score will go up
+          ) {
+            playerScore++;
+            console.log(
+              `Player score: ${playerScore} Computer score: ${computerScore}`
+            );
+          } else if (
+            playRound(playerSelection, computerSelection).includes("You lose") // if the player lost, the computer's score will go up
+          ) {
+            computerScore++;
+            console.log(
+              `Player score: ${playerScore} Computer score: ${computerScore}`
+            );
+          } else if (
+            playRound(playerSelection, computerSelection).includes("tie") // if there was a tie, nothing changes. just scores are logged.
+          ) {
+            console.log(
+              `Player score: ${playerScore} Computer score: ${computerScore}`
+            );
+          }
+        }
+        if (playerScore === 5) {
+          // Displays a winning message if the player scored 5 first
+          console.log(`Game over! You reached 5 first! You win!`);
+        } else if (computerScore === 5) {
+          // Displays a losing message if the computer scored 5 first
+          console.log(`Game over! The computer reached 5 first! You lose!`);
+        }
+      }
+      game();
+    </script>
+  </body>
+</html>
