@@ -4,111 +4,365 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Odin Project Rock, Paper, Scissors</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Bungee+Outline&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>Rock, Paper, Scissors</title>
   </head>
 
   <body>
-    <script>
-      "use strict";
-      let choices = ["Rock", "Paper", "Scissors"];
-      function computerPlay() {
-        let choice = choices[Math.floor(Math.random() * choices.length)]; // makes a random selection for the computer
-        return choice.toLocaleLowerCase();
-      }
+    <section id="main-content-section">
+      <h1>Rock, Paper, Scissors!</h1>
+      <div id="player-container">
+        <span
+          ><img src="images/player.png" alt="player" class="player-img"
+        /></span>
+        <div id="button-container">
+          <button id="rock">
+            <img src="images/rock.png" alt="Rock icon" class="selection-icon" />
+            <p class="btn-label">Rock</p>
+          </button>
+          <button id="paper">
+            <img
+              src="images/paper.png"
+              alt="Paper icon"
+              class="selection-icon"
+            />
+            <p class="btn-label">Paper</p>
+          </button>
+          <button id="scissors">
+            <img
+              src="images/scissors.png"
+              alt="Scissors icons"
+              class="selection-icon"
+            />
+            <p class="btn-label">Scissors</p>
+          </button>
+        </div>
+      </div>
 
-      function playRound(playerSelection, computerSelection) {
-        // takes the computer and player selections and determines a winner
-        if (playerSelection === "rock" && computerSelection === "rock") {
-          return `That's a tie!`;
-        } else if (
-          playerSelection === "rock" &&
-          computerSelection === "paper"
-        ) {
-          return `You lose! Paper beats Rock!`;
-        } else if (
-          playerSelection === "rock" &&
-          computerSelection === "scissors"
-        ) {
-          return `You win! Rock beats Scissors!`;
-        } else if (
-          playerSelection === "paper" &&
-          computerSelection === "paper"
-        ) {
-          return `That's a tie!`;
-        } else if (
-          playerSelection === "paper" &&
-          computerSelection === "rock"
-        ) {
-          return `You win! Paper beats Rock`;
-        } else if (
-          playerSelection === "paper" &&
-          computerSelection === "scissors"
-        ) {
-          return `You lose! Scissors beats Paper!`;
-        } else if (
-          playerSelection === "scissors" &&
-          computerSelection === "scissors"
-        ) {
-          return `That's a tie!`;
-        } else if (
-          playerSelection === "scissors" &&
-          computerSelection === "rock"
-        ) {
-          return `You lose! Rock beats Scissors`;
-        } else if (
-          playerSelection === "scissors" &&
-          computerSelection === "paper"
-        ) {
-          return `You win! Scissors beats paper!`;
-        } else {
-          return `Please make a valid selection.`;
-        }
-      }
+      <div id="computer-container">
+        <span
+          ><img src="images/computer.png" alt="player" class="computer-img"
+        /></span>
+        <div id="computer-button-container">
+          <button id="computer-rock">
+            <img src="images/rock.png" alt="Rock icon" class="selection-icon" />
+            <p class="btn-label">Rock</p>
+          </button>
+          <button id="computer-paper">
+            <img
+              src="images/paper.png"
+              alt="Paper icon"
+              class="selection-icon"
+            />
+            <p class="btn-label">Paper</p>
+          </button>
+          <button id="computer-scissors">
+            <img
+              src="images/scissors.png"
+              alt="Scissors icons"
+              class="selection-icon"
+            />
+            <p class="btn-label">Scissors</p>
+          </button>
+        </div>
+      </div>
+    </section>
+    <section class="footer">
+      <div class="footer-container">
+        <div class="attribution-container">
+          <div class="attribution">
+            Icons made by
+            <a href="https://www.flaticon.com/authors/surang" title="surang"
+              >surang</a
+            >
+            from
+            <a href="https://www.flaticon.com/" title="Flaticon"
+              >www.flaticon.com</a
+            >
+          </div>
+          <div class="attribution">
+            Icons made by
+            <a
+              href="https://www.flaticon.com/authors/phoenix-group"
+              title="Phoenix Group"
+              >Phoenix Group</a
+            >
+            from
+            <a href="https://www.flaticon.com/" title="Flaticon"
+              >www.flaticon.com</a
+            >
+          </div>
+          <div class="attribution">
+            Icons made by
+            <a
+              href="https://www.flaticon.com/authors/pavani-tln"
+              title="Pavani TLN"
+              >Pavani TLN</a
+            >
+            from
+            <a href="https://www.flaticon.com/" title="Flaticon"
+              >www.flaticon.com</a
+            >
+          </div>
+          <div class="attribution">
+            Icons made by
+            <a
+              href="https://www.flaticon.com/authors/those-icons"
+              title="Those Icons"
+              >Those Icons</a
+            >
+            from
+            <a href="https://www.flaticon.com/" title="Flaticon"
+              >www.flaticon.com</a
+            >
+          </div>
+          <div class="attribution">
+            <a href="https://www.freepik.com/vectors/background"
+              >Background vector created by pikisuperstar - www.freepik.com</a
+            >
+          </div>
+          <div class="attribution">
+            Icons made by
+            <a href="https://www.flaticon.com/authors/handicon" title="Handicon"
+              >Handicon</a
+            >
+            from
+            <a href="https://www.flaticon.com/" title="Flaticon"
+              >www.flaticon.com</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
 
-      function game() {
-        let playerScore = 0; // sets the initial player score
-        let computerScore = 0; // sets the initial computer score
-        while (playerScore < 5 && computerScore < 5) {
-          // if player score or computer score is below 5, the loop will continue to run
-          const playerSelection = prompt(
-            `Choose Rock, Paper, or Scissors.`
-          ).toLocaleLowerCase(); // prompts the player to make a selection
-          const computerSelection = computerPlay(); // displays the computer selection using the computerPlay function from earlier
-          playRound(playerSelection, computerSelection); // runs the playRound function, which determines who wins
-          console.log(`Player selection: ${playerSelection}`); // logs the players selection to the console
-          console.log(`Computer selection: ${computerSelection}`); // logs the computers selection to the console
-          console.log(playRound(playerSelection, computerSelection)); // logs the play round results
-          if (
-            playRound(playerSelection, computerSelection).includes("You win") // if the player won, their score will go up
-          ) {
-            playerScore++;
-            console.log(
-              `Player score: ${playerScore} Computer score: ${computerScore}`
-            );
-          } else if (
-            playRound(playerSelection, computerSelection).includes("You lose") // if the player lost, the computer's score will go up
-          ) {
-            computerScore++;
-            console.log(
-              `Player score: ${playerScore} Computer score: ${computerScore}`
-            );
-          } else if (
-            playRound(playerSelection, computerSelection).includes("tie") // if there was a tie, nothing changes. just scores are logged.
-          ) {
-            console.log(
-              `Player score: ${playerScore} Computer score: ${computerScore}`
-            );
-          }
+<!-- Javascript -->
+<script>
+  "use strict";
+  const h2 = document.createElement("h2");
+  document
+    .getElementById("main-content-section")
+    .insertBefore(h2, document.getElementById("player-container"));
+  h2.textContent = `Score 5 to win. Make a choice!`;
+  h2.setAttribute(
+    "style",
+    "color: #fff; font-size: 2.8rem; margin-bottom: 1rem; font-family: 'Bebas Neue', cursive"
+  );
+
+  const p = document.createElement("p");
+  document
+    .getElementById("player-container")
+    .insertBefore(p, document.getElementById("button-container"));
+
+  p.setAttribute(
+    "style",
+    "color: #fff; font-size: 2.4rem; display: inline; font-family: 'Bebas Neue', cursive"
+  );
+  p.textContent = `Your Score: 0`;
+
+  const startNewText = document.createElement("p");
+  document
+    .getElementById("main-content-section")
+    .insertBefore(startNewText, document.querySelector("#player-container"));
+
+  startNewText.setAttribute(
+    "style",
+    "color: #fff; font-size: 2.8rem; display: inline; font-family: 'Bebas Neue', cursive"
+  );
+
+  //computer DOM
+  const computerScoreTracker = document.createElement("p");
+  document
+    .getElementById("computer-container")
+    .insertBefore(
+      computerScoreTracker,
+      document.getElementById("computer-button-container")
+    );
+  computerScoreTracker.setAttribute(
+    "style",
+    "color: #fff; font-size: 2.4rem; display: inline; font-family: 'Bebas Neue', cursive"
+  );
+  computerScoreTracker.textContent = `Computer Score: 0`;
+
+  let choices = ["Rock", "Paper", "Scissors"];
+  function computerPlay() {
+    let choice = choices[Math.floor(Math.random() * choices.length)]; // makes a random selection for the computer
+    return choice.toLocaleLowerCase();
+  }
+
+  function playRound(playerSelection, computerSelection) {
+    // takes the computer and player selections and determines a winner
+    if (playerSelection === "rock" && computerSelection === "rock") {
+      document.querySelector("#rock").style.backgroundColor = "#000";
+      document.querySelector("#computer-rock").style.backgroundColor = "#000";
+      document.querySelector("#paper").style.backgroundColor = "#6ecff3";
+      document.querySelector("#computer-paper").style.backgroundColor =
+        "#6ecff3";
+      document.querySelector("#scissors").style.backgroundColor = "#641277";
+      document.querySelector("#computer-scissors").style.backgroundColor =
+        "#641277";
+      h2.textContent = `That's a tie!`;
+      return `That's a tie!`;
+    } else if (playerSelection === "rock" && computerSelection === "paper") {
+      document.querySelector("#rock").style.backgroundColor = "#000";
+      document.querySelector("#computer-rock").style.backgroundColor =
+        "#ff43df";
+      document.querySelector("#paper").style.backgroundColor = "#6ecff3";
+      document.querySelector("#computer-paper").style.backgroundColor = "#000";
+      document.querySelector("#scissors").style.backgroundColor = "#641277";
+      document.querySelector("#computer-scissors").style.backgroundColor =
+        "#641277";
+      h2.textContent = `You lose! Paper beats Rock!`;
+      return `You lose! Paper beats Rock!`;
+    } else if (playerSelection === "rock" && computerSelection === "scissors") {
+      document.querySelector("#rock").style.backgroundColor = "#000";
+      document.querySelector("#computer-rock").style.backgroundColor =
+        "#ff43df";
+      document.querySelector("#paper").style.backgroundColor = "#6ecff3";
+      document.querySelector("#computer-paper").style.backgroundColor =
+        "#6ecff3";
+      document.querySelector("#scissors").style.backgroundColor = "#641277";
+      document.querySelector("#computer-scissors").style.backgroundColor =
+        "#000";
+      h2.textContent = `You win! Rock beats Scissors!`;
+      return `You win! Rock beats Scissors!`;
+    } else if (playerSelection === "paper" && computerSelection === "paper") {
+      document.querySelector("#rock").style.backgroundColor = "#ff43df";
+      document.querySelector("#computer-rock").style.backgroundColor =
+        "#ff43df";
+      document.querySelector("#paper").style.backgroundColor = "#000";
+      document.querySelector("#computer-paper").style.backgroundColor = "#000";
+      document.querySelector("#scissors").style.backgroundColor = "#641277";
+      document.querySelector("#computer-scissors").style.backgroundColor =
+        "#641277";
+      h2.textContent = `That's a  tie`;
+      return `That's a tie!`;
+    } else if (playerSelection === "paper" && computerSelection === "rock") {
+      document.querySelector("#rock").style.backgroundColor = "#ff43df";
+      document.querySelector("#computer-rock").style.backgroundColor = "#000";
+      document.querySelector("#paper").style.backgroundColor = "#000";
+      document.querySelector("#computer-paper").style.backgroundColor =
+        "#6ecff3";
+      document.querySelector("#scissors").style.backgroundColor = "#641277";
+      document.querySelector("#computer-scissors").style.backgroundColor =
+        "#641277";
+      h2.textContent = `You win! Paper beats Rock`;
+      return `You win! Paper beats Rock`;
+    } else if (
+      playerSelection === "paper" &&
+      computerSelection === "scissors"
+    ) {
+      document.querySelector("#rock").style.backgroundColor = "#ff43df";
+      document.querySelector("#computer-rock").style.backgroundColor =
+        "##ff43df";
+      document.querySelector("#paper").style.backgroundColor = "#000";
+      document.querySelector("#computer-paper").style.backgroundColor =
+        "#6ecff3";
+      document.querySelector("#scissors").style.backgroundColor = "#641277";
+      document.querySelector("#computer-scissors").style.backgroundColor =
+        "#000";
+      h2.textContent = "You lose! Scissors beats Paper!";
+      return `You lose! Scissors beats Paper!`;
+    } else if (
+      playerSelection === "scissors" &&
+      computerSelection === "scissors"
+    ) {
+      document.querySelector("#rock").style.backgroundColor = "#ff43df";
+      document.querySelector("#computer-rock").style.backgroundColor =
+        "##ff43df";
+      document.querySelector("#paper").style.backgroundColor = "#6ecff3";
+      document.querySelector("#computer-paper").style.backgroundColor =
+        "#6ecff3";
+      document.querySelector("#scissors").style.backgroundColor = "#000";
+      document.querySelector("#computer-scissors").style.backgroundColor =
+        "#000";
+      h2.textContent = `That's a tie!`;
+      return `That's a tie!`;
+    } else if (playerSelection === "scissors" && computerSelection === "rock") {
+      document.querySelector("#rock").style.backgroundColor = "#ff43df";
+      document.querySelector("#computer-rock").style.backgroundColor = "#000";
+      document.querySelector("#paper").style.backgroundColor = "#6ecff3";
+      document.querySelector("#computer-paper").style.backgroundColor =
+        "#6ecff3";
+      document.querySelector("#scissors").style.backgroundColor = "#000";
+      document.querySelector("#computer-scissors").style.backgroundColor =
+        "#641277";
+      h2.textContent = `You lose! Rock beats Scissors!`;
+      return `You lose! Rock beats Scissors!`;
+    } else if (
+      playerSelection === "scissors" &&
+      computerSelection === "paper"
+    ) {
+      document.querySelector("#rock").style.backgroundColor = "#ff43df";
+      document.querySelector("#computer-rock").style.backgroundColor =
+        "#ff43df";
+      document.querySelector("#paper").style.backgroundColor = "#6ecff3";
+      document.querySelector("#computer-paper").style.backgroundColor = "#000";
+      document.querySelector("#scissors").style.backgroundColor = "#000";
+      document.querySelector("#computer-scissors").style.backgroundColor =
+        "#641277";
+      h2.textContent = `You win! Scissors beats Paper!`;
+      return `You win! Scissors beats Paper!`;
+    } else {
+      h2.textContent = `Please make a valid selection.`;
+      return `Please make a valid selection.`;
+    }
+  }
+
+  function game() {
+    let playerScore = 0; // sets the initial player score
+    let computerScore = 0; // sets the initial computer score
+    const buttons = document.querySelectorAll("button");
+    buttons.forEach((button) => {
+      button.addEventListener("click", () => {
+        let playerSelection = button.id;
+        let computerSelection = computerPlay();
+        playRound(playerSelection, computerSelection); // runs the playRound function, which determines who wins
+
+        let choices = ["Rock", "Paper", "Scissors"];
+        if (
+          playRound(playerSelection, computerSelection).includes("You win") // if the player won, their score will go up
+        ) {
+          playerScore++;
+          p.textContent = `Your Score: ${playerScore}`;
+          computerScoreTracker.textContent = `Computer Score: ${computerScore}`;
+        } else if (
+          playRound(playerSelection, computerSelection).includes("You lose") // if the player lost, the computer's score will go up
+        ) {
+          computerScore++;
+          p.textContent = `Your Score: ${playerScore}`;
+          computerScoreTracker.textContent = `Computer Score: ${computerScore}`;
+        } else if (
+          playRound(playerSelection, computerSelection).includes("tie") // if there was a tie, nothing changes. just scores are logged.
+        ) {
+          p.textContent = `Your Score: ${playerScore}`;
+          computerScoreTracker.textContent = `Computer Score: ${computerScore}`;
         }
         if (playerScore === 5) {
           // Displays a winning message if the player scored 5 first
-          console.log(`Game over! You reached 5 first! You win!`);
+          startNewText.textContent = `Game Over! You win! Make another selection to start a new game.`;
+          resetScore();
         } else if (computerScore === 5) {
           // Displays a losing message if the computer scored 5 first
-          console.log(`Game over! The computer reached 5 first! You lose!`);
+          startNewText.textContent = `Game Over! You lose! Make another selection to start a new game.`;
+          resetScore();
+        } else {
+          startNewText.textContent = ``;
         }
-      }
-      game();
-    </script>
-  </body>
-</html>
+      });
+    });
+    function resetScore() {
+      computerScore = 0;
+      playerScore = 0;
+    }
+  }
+
+  game();
+</script>
